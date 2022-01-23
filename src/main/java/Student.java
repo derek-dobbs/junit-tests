@@ -101,8 +101,9 @@ public class Student {
         s1.addGrade(20);
 
 
-        s1.displayGrades();
-//        s1.updateGrade(15, 100);
+//        s1.displayGrades();
+        s1.updateGrade(15, 100);//does not compile, fix it
+//        s1.displayGrades();
 
 //        System.out.println(s1.getGrades());
 //        System.out.println(s1.getGradeAverage());
