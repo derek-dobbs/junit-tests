@@ -7,7 +7,10 @@
     <groupId>junit-tests</groupId>
     <artifactId>tests</artifactId>
     <version>1.0-SNAPSHOT</version>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1cb699eb21a24262c64b81c153600b069d52d8d8
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>

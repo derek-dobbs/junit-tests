@@ -1,35 +1,42 @@
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class StudentTest {
-    @Test
-    public void testForConstructor() {
-        Student s1 = new Student(12345, "Student1");
+    private Student fer;
+    private Student ryan;
 
-        Assert.assertEquals("Student1", s1.getName());
-        Assert.assertEquals(12345, s1.getId());
-        Assert.assertTrue(s1.getGrades().size() == 0);
+    @Before
+    public void setUp() {
+        this.fer = new Student(1L, "fer");
+        this.ryan = null;
     }
 
     @Test
-    public void testForAddGrade() {
-        Student s1 = new Student(12345, "Student1");
-        s1.addGrade(95);
-
-        Assert.assertSame(95, s1.getGrades().get(0));
+    public void testCreateStudent(){
+        assertNull(ryan);
+        assertNotNull(fer);
     }
 
     @Test
-    public void testForGetGradeAverage() {
-        Student s1 = new Student(12345, "Student1");
+    public void testStudentFields(){
+        assertSame(1L, fer.getId());
+        assertSame("fer", fer.getName());
+        assertSame(0, fer.getGrades().size());
+    }
 
-        s1.addGrade(25);
-        s1.addGrade(15);
-        s1.addGrade(35);
-        s1.addGrade(25);
+    @Test
+    public void testAddGrade(){
+        fer.addGrade(100);
+        assertSame(100, fer.getGrades().get(0));
+        fer.addGrade(80);
+        assertSame(80, fer.getGrades().get(1));
+    }
 
-        double gradeAverage = s1.getGradeAverage();
-
-        Assert.assertTrue(gradeAverage == 25.0);
+    @Test
+    public void testAverageGrade(){
+        fer.addGrade(100);
+        fer.addGrade(80);
+        assertEquals(90, fer.getGradeAverage(), 0);
     }
 }
