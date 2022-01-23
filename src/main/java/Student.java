@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Student {
 
@@ -35,4 +36,54 @@ public class Student {
         }
         return sum / this.grades.size() ;
     }
-}
+
+    public boolean updateGrade() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.useDelimiter("\n");
+
+        //display list of grades
+        System.out.printf("Here are the grades for %s:%n", this.getName());
+        for (int i = 0; i < this.grades.size(); i++) {
+            System.out.println(this.grades.get(i));
+        }
+
+        //prompt user for which grade they would like to remove
+        System.out.print("What grade would you like to remove? ");
+        int userGradeToRemove = scanner.nextInt();
+
+        //prompt the user for what grade they would like to change it to
+        System.out.print("What grade would you like to change it to? ");
+        int userGradeToAdd = scanner.nextInt();
+
+        //loop through the Student's list of grades
+        for (int i = 0; i < this.grades.size(); i++) {
+            //if the input the user entered matches the value of the current iteration
+            //output the original grade (variable) was changed to (variable)
+            if(this.grades.get(i) == userGradeToRemove) {
+                this.grades.remove(this.grades.get(i));
+            }
+        }
+        this.addGrade(100);
+        System.out.println("Here is the new grades list:");
+
+        for (int i = 0; i < this.grades.size(); i++) {
+            System.out.println(this.grades.get(i));
+        }
+
+        return true; //was forced by IntelliJ to return something, even when return type was void in the method. This is why this method returns a boolean.
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student(12345, "Michael");
+        Student s2 = new Student(21435, "Dwight");
+        Student s3 = new Student(45312, "Jim");
+
+        s1.addGrade(15);
+        s1.addGrade(25);
+        s1.addGrade(20);
+
+        System.out.println(s1.getGrades());
+        System.out.println(s1.getGradeAverage());
+        System.out.println(s1.updateGrade());
+    }
+}//end class Student
